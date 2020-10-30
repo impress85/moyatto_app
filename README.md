@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| email    | string     | null: false                    |
+| password |  string    | null: false                    |
+| nickname | string     | null: false                    |
 
-Things you may want to cover:
+### Association
+- has_many :fogs
+- has_many :reviews
+- has_many :advices
 
-* Ruby version
+## fogs テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| want     | text       | null: false                    |
+| cannot   | text       | null: false                    |
+| image    | image      | ActiveStorage                  |
+| status   | text       | null: false                    |
+| user     | references | null: false, foreign_key: true |
 
-* System dependencies
+### Association
+- has_one :clear
+- has_many :advices
+- has_many :reviews
+- belongs_to :user
 
-* Configuration
+## reviews テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| story    | text       | null: false                    |
+| result   | text       | null: false                    |
+| user     | references | null: false, foreign_key: true |
+| fog      | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- has_one :clear
+- belongs_to :user
+- belongs_to :fog
 
-* Database initialization
+## advices テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| comment  | text       | null: false                    |
+| user     | references | null: false, foreign_key: true |
+| fog      | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- has_one :clear
+- belongs_to :user
+- belongs_to :fog
 
-* Services (job queues, cache servers, search engines, etc.)
+## clears テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| fog      | references | null: false, foreign_key: true |
+| review   | references | null: false, foreign_key: true |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :fog
+- belongs_to :review
