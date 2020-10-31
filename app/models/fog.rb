@@ -1,0 +1,2 @@
+class Fog < ApplicationRecord
+end
