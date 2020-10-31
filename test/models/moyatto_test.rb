@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FogTest < ActiveSupport::TestCase
+class MoyattoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,2 @@
+class Moyatto < ApplicationRecord
+end

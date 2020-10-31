@@ -8,11 +8,11 @@
 | nickname | string     | null: false                    |
 
 ### Association
-- has_many :fogs
+- has_many :moyattoes
 - has_many :reviews
 - has_many :advices
 
-## fogs テーブル
+## moyattoes テーブル
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | want     | text       | null: false                    |
@@ -38,7 +38,7 @@
 ### Association
 - has_one :clear
 - belongs_to :user
-- belongs_to :fog
+- belongs_to :moyatto
 
 ## advices テーブル
 | Column   | Type       | Options                        |
@@ -50,14 +50,14 @@
 ### Association
 - has_one :clear
 - belongs_to :user
-- belongs_to :fog
+- belongs_to :moyatto
 
 ## clears テーブル
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| fog      | references | null: false, foreign_key: true |
+| moyatto  | references | null: false, foreign_key: true |
 | review   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :fog
+- belongs_to :moyatto
 - belongs_to :review
