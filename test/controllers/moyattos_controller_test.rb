@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MoyattoesControllerTest < ActionDispatch::IntegrationTest
+class MoyattosControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

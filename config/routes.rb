@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "moyattoes#index"
-  resources :moyattoes, only:[:new,:create]
+  root to: "moyattos#index"
+  resources :moyattos, only:[:new,:create]
 
 end
