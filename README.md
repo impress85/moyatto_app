@@ -32,7 +32,6 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | story    | text       | null: false                    |
-| result   | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
 | moyatto  | references | null: false, foreign_key: true |
 
