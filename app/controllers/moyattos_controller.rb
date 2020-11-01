@@ -1,6 +1,6 @@
 class MoyattosController < ApplicationController
   def index
-    @moyattoes = Moyatto.all
+    @moyattos = Moyatto.all
   end
 
   def new
@@ -11,6 +11,9 @@ class MoyattosController < ApplicationController
     @moyatto = Moyatto.create(moyatto_params)
   end
 
+  def show
+    @moyatto = Moyatto.find(params[:id])
+  end
 
   private
   def moyatto_params
