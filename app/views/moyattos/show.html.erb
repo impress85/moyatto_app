@@ -1,0 +1,11 @@
+
+  <p>やりたいこと</p>
+  <%= "#{@moyatto.want}" %>
+    <p>どのようなエラー</p>
+   <%= "#{@moyatto.cannot}" %>
+     <% if @moyatto.image.attached? %>
+   <p> エラー画面</p>
+  <%= image_tag @moyatto.image %>
+    <%end%>
+    <p>詳細な状況</p>
+  <%= "#{@moyatto.status}" %>
