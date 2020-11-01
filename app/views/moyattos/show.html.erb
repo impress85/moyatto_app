@@ -11,3 +11,5 @@
   <%= "#{@moyatto.status}" %>
 
     <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
+    <%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete %>
+
