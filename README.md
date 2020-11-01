@@ -8,11 +8,12 @@
 | nickname | string     | null: false                    |
 
 ### Association
-- has_many :moyattoes
-- has_many :reviews
+- has_many :moyattos
+- has_many :guesses
+- has_many :sukkiris
 - has_many :advices
 
-## moyattoes テーブル
+## moyattos テーブル
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | want     | text       | null: false                    |
@@ -24,19 +25,19 @@
 ### Association
 - has_one :clear
 - has_many :advices
-- has_many :reviews
+- has_many :guesses
 - belongs_to :user
 
-## reviews テーブル
+## guesses テーブル
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | story    | text       | null: false                    |
 | result   | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
-| fog      | references | null: false, foreign_key: true |
+| moyatto  | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :clear
+- has_one :sukkiri
 - belongs_to :user
 - belongs_to :moyatto
 
@@ -45,19 +46,20 @@
 | -------- | ---------- | ------------------------------ |
 | comment  | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
-| fog      | references | null: false, foreign_key: true |
+| moyatto  | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :clear
 - belongs_to :user
 - belongs_to :moyatto
 
-## clears テーブル
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| moyatto  | references | null: false, foreign_key: true |
-| review   | references | null: false, foreign_key: true |
+## sukkiris テーブル
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| result         | text       | null: false                    |
+| moyatto_status | integer    | ActiveHash                     |
+| user           | references | null: false, foreign_key: true |
+| guess          | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :moyatto
-- belongs_to :review
+- belongs_to :user
+- belongs_to :guess
