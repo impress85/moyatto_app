@@ -9,3 +9,5 @@
     <%end%>
     <p>詳細な状況</p>
   <%= "#{@moyatto.status}" %>
+
+    <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>

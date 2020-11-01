@@ -1,0 +1,12 @@
+<h1>moyattoを言語化しましょう！</h1>
+<%= form_with model: @moyatto do |f| %> 
+  <p>やりたいことは何ですか？</p>
+  <%= f.text_area :want %>
+    <p>どのようなエラーですか？</p>
+  <%= f.text_area :cannot %>  
+   <p> エラー画面があれば添付してください</p>
+  <%= f.file_field :image %>
+    <p>どのようなことが、どのタイミングで起こりますか？</p>
+  <%= f.text_area :status %>
+  <%= f.submit "保存する"  %>
+  <% end %>
