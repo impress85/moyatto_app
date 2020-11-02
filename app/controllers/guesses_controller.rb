@@ -13,6 +13,9 @@ class GuessesController < ApplicationController
     @guess = Guess.create(guess_params)
   end
 
+  def show
+  end
+
   private
   def guess_params
     params.require(:guess).permit(:story).merge(user_id: current_user.id,moyatto_id: params[:moyatto_id])

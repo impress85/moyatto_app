@@ -6,6 +6,7 @@
 <% @guesses.each do |guess| %>
   <p>仮説</p>
   <%= "#{guess.story}" %>
+  <%= link_to "仮説詳細",moyatto_guess_path(:moyatto_id,:id) %>
   <%end%>
 
     <p>登録ボタン</p>
