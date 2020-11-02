@@ -13,3 +13,6 @@
     <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
     <%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete %>
 
+<%# 仮説の一覧を表示する %>
+
+ <%= link_to "仮説の一覧画面へ",moyatto_guesses_path(@moyatto.id) %>
