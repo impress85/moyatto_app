@@ -1,0 +1,7 @@
+<h1>仮説の編集</h1>
+<%= form_with model:[@moyatto,@guess], local: true  do |f| %>
+  <%= f.text_area :story %>
+  <%= f.submit "保存する"  %>
+<% end %>
+
+<%= link_to "仮説を削除する",moyatto_guess_path(@moyatto.id,@guess.id),method: :delete, data: { confirm: '削除しますか？' }  %>

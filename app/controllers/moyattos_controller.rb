@@ -13,6 +13,7 @@ class MoyattosController < ApplicationController
 
   def show
     @moyatto = Moyatto.find(params[:id])
+    @guesses = @moyatto.guesses
   end
 
   def edit
