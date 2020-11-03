@@ -1,18 +1,37 @@
-
-  <p>やりたいこと</p>
-  <%= "#{@moyatto.want}" %>
-    <p>どのようなエラー</p>
-   <%= "#{@moyatto.cannot}" %>
-     <% if @moyatto.image.attached? %>
-   <p> エラー画面</p>
+<h1>moyattoのshow画面</h1>
+<p>やりたいこと</p>
+<%= "#{@moyatto.want}" %>
+<p>どのようなエラー</p>
+<%= "#{@moyatto.cannot}" %>
+<% if @moyatto.image.attached? %>
+  <p> エラー画面</p>
   <%= image_tag @moyatto.image %>
-    <%end%>
-    <p>詳細な状況</p>
-  <%= "#{@moyatto.status}" %>
+<%end%>
+<p>詳細な状況</p>
+<%= "#{@moyatto.status}" %>
 
-    <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
-    <%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete %>
+<br>
+<%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
+<br>
+<%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete %>
 
 <%# 仮説の一覧を表示する %>
+<br>
+<br>
+<%#= link_to "仮説の一覧画面へ",moyatto_guesses_path(@moyatto.id) %>
 
- <%= link_to "仮説の一覧画面へ",moyatto_guesses_path(@moyatto.id) %>
+<h2>ここからguess一覧表示</h2>
+<h2>ーーーーーーーー</h2>
+<% if @guesses %>  <%# 仮説があれば表示 %>
+  <% @guesses.each do |guess| %>
+    <p>【仮説】  
+    <%= "#{guess.story}" %></p>
+    <%#= link_to "仮説詳細",moyatto_guess_path(:moyatto_id,:id) %>
+    <%= link_to "仮説編集（エラーになる）",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
+    <br>
+     <%= link_to "結果を入力する(未実装)",root_path %>
+    <h2>ーーーーーーーー</h2>
+  <%end%>
+<%end%>
+<br>
+<%= link_to "仮説の登録をする",new_moyatto_guess_path(@moyatto.id) %>
