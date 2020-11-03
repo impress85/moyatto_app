@@ -1,0 +1,2 @@
+class SukkirisController < ApplicationController
+end
