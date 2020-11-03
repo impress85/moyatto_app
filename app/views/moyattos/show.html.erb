@@ -13,7 +13,7 @@
 <br>
 <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
 <br>
-<%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete %>
+<%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %>
 
 <%# 仮説の一覧を表示する %>
 <br>
@@ -27,11 +27,11 @@
     <p>【仮説】  
     <%= "#{guess.story}" %></p>
     <%#= link_to "仮説詳細",moyatto_guess_path(:moyatto_id,:id) %>
-    <%= link_to "仮説編集（エラーになる）",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
+    <%= link_to "仮説を編集する",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
     <br>
      <%= link_to "結果を入力する(未実装)",root_path %>
     <h2>ーーーーーーーー</h2>
   <%end%>
 <%end%>
 <br>
-<%= link_to "仮説の登録をする",new_moyatto_guess_path(@moyatto.id) %>
+<%= link_to "仮説を登録する",new_moyatto_guess_path(@moyatto.id) %>
