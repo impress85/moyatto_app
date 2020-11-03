@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "moyattos#index"
   resources :moyattos, only:[:new,:create,:show,:edit,:update,:destroy] do
     resources :guesses, only:[:new,:create,:edit,:update,:destroy]
+    resources :sukkiri, only:[:new,:create]
   end
 
 
