@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :moyattos
   has_many :guesses
+  has_many :sukkiris
+
 end
