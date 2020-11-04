@@ -2,23 +2,27 @@
 <% if signed_in? %>
   <%= "(ログイン状態であれば表示する)" %>
   <br>
-  <%= link_to "こんにちは、#{current_user.nickname}さん",root_path %> 
-<h3>mmoyattoを登録する。</h3>
+  <%= link_to "こんにちは、#{current_user.nickname}さん",root_path %>   
+  <h3>moyattoを登録する。</h3>
   <%= link_to "登録ボタン",new_moyatto_path %>
-  <%end%>
-  <h3>mmoyatto一覧</h3>
-<h1>---------------------</h1>
+<%end%>
+<h3>moyatto一覧</h3>
+<hr>
 <% @moyattos.each do |moyatto| %>
-  <p>やりたいこと</p>
-  <%= "#{moyatto.want}" %>
-  <p>どのようなエラー</p>
-  <%= "#{moyatto.cannot}"%>
-  <% if moyatto.image.attached? %>
-    <p> エラー画面</p>
-    <%= image_tag moyatto.image %>
+  <%# スッキリマーク %> 
+  <% @sukkiris= moyatto.sukkiris %>
+  <% if @sukkiris.find_by(moyatto_status: '1') != nil%>
+    <%= "すっきり" %>
+  <%else%>
+    <%= "もやっと"%>
   <%end%>
-  <p>詳細な状況</p>
-  <%= "#{moyatto.status}" %>
- <br><br> <%= link_to "このmoyattoの詳細をみる",moyatto_path(moyatto.id) %>
-      <h1>---------------------</h1>
+  <%# スッキリマークここまで %> 
+    <br>
+  <%= "  やりたいこと:#{moyatto.want}" %>
+
+  <br>
+  <%= "投稿者：#{moyatto.user.nickname}" %>
+  <br>
+  <%= link_to "このmoyattoの詳細をみる",moyatto_path(moyatto.id) %>
+  <hr>
 <%end%>

@@ -9,11 +9,12 @@ class MoyattosController < ApplicationController
 
   def create
     @moyatto = Moyatto.create(moyatto_params)
+    redirect_to root_path
   end
 
   def show
     @moyatto = Moyatto.find(params[:id])
-    @guesses = @moyatto.guesses
+    @guesses = @moyatto.guesses 
   end
 
   def edit
@@ -23,6 +24,8 @@ class MoyattosController < ApplicationController
   def update
     @moyatto = Moyatto.find(params[:id])
     @moyatto.update(moyatto_params)
+    redirect_to moyatto_path(@moyatto.id)
+
   end
 
   def destroy

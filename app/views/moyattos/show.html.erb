@@ -10,28 +10,40 @@
 <p>詳細な状況</p>
 <%= "#{@moyatto.status}" %>
 
-<br>
+<br><br>
+
 <%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
 <br>
 <%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %>
 
-<%# 仮説の一覧を表示する %>
-<br>
-<br>
-<%#= link_to "仮説の一覧画面へ",moyatto_guesses_path(@moyatto.id) %>
+<br><br>
 
-<h2>ここからguess一覧表示</h2>
-<h2>ーーーーーーーー</h2>
+<%# 仮説の一覧を表示する %>
+
+<h2>ここからguessとsukkiriの一覧表示</h2>
+<%= link_to "新しく仮説を登録する",new_moyatto_guess_path(@moyatto.id) %>
+<hr>
+
 <% if @guesses %>  <%# 仮説があれば表示 %>
   <% @guesses.each do |guess| %>
-    <p>【仮説】  
-    <%= "#{guess.story}" %></p>
-    <%#= link_to "仮説詳細",moyatto_guess_path(:moyatto_id,:id) %>
-    <%= link_to "仮説を編集する",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
+  <%# @sukkiris.each do |sukkiri| %>
+      <p>【仮説】 <%= "#{guess.story}" %></p>
+      <%if guess.sukkiri != nil%>
+    <p>【結果】  <%= "#{guess.sukkiri.result}" %></p> 
+          <%# スッキリマーク %> 
+      <% if guess.sukkiri.moyatto_status ==  1 %>
+        <%= "すっきり" %>
+      <%else%>
+        <%= "もやっと"%>
+      <%end%>
+    <%# スッキリマークここまで %> 
+    <%else%>
+        <%= link_to "仮説を編集する",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
     <br>
-     <%= link_to "結果を入力する(未実装)",root_path %>
-    <h2>ーーーーーーーー</h2>
-  <%end%>
+     <%= link_to "結果を入力する" ,new_moyatto_guess_sukkiri_path(@moyatto.id,guess.id) %>
+    <%end%>
+    <hr>
+  <%end %>
 <%end%>
 <br>
-<%= link_to "仮説を登録する",new_moyatto_guess_path(@moyatto.id) %>
+
