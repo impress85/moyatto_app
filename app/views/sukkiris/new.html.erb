@@ -1,0 +1,15 @@
+<h1>結果の登録</h1>
+<%= form_with model:[@moyatto,@guess,@sukkiri], local: true  do |f| %>
+  <p>結果を登録</p>
+  <%= f.text_area :result %>
+  <br>
+ <br>
+  <%= f.label :moyatto_status, 'すっきり？' %>
+ 
+   <br>
+  <%= f.select :moyatto_status,{'すっきり':1,'もやっと':2},{ include_blank: '----'}, 
+  { class: 'form-control' , required: true } %>
+<br>
+<br>
+  <%= f.submit "結果を保存"  ,data: { confirm: '結果を登録しますか？' }  %>
+<% end %>

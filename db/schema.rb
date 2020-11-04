@@ -55,11 +55,14 @@ ActiveRecord::Schema.define(version: 2020_11_03_040243) do
 
   create_table "sukkiris", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "result", null: false
+    t.integer "moyatto_status"
     t.bigint "user_id"
     t.bigint "guess_id"
+    t.bigint "moyatto_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["guess_id"], name: "index_sukkiris_on_guess_id"
+    t.index ["moyatto_id"], name: "index_sukkiris_on_moyatto_id"
     t.index ["user_id"], name: "index_sukkiris_on_user_id"
   end
 
@@ -81,5 +84,6 @@ ActiveRecord::Schema.define(version: 2020_11_03_040243) do
   add_foreign_key "guesses", "users"
   add_foreign_key "moyattos", "users"
   add_foreign_key "sukkiris", "guesses"
+  add_foreign_key "sukkiris", "moyattos"
   add_foreign_key "sukkiris", "users"
 end
