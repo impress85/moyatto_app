@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :moyattos
   has_many :guesses
   has_many :sukkiris
+  has_many :advices
 
 end

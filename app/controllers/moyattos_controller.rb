@@ -15,6 +15,8 @@ class MoyattosController < ApplicationController
   def show
     @moyatto = Moyatto.find(params[:id])
     @guesses = @moyatto.guesses 
+    @advices = @moyatto.advices
+    @advice = Advice.new
   end
 
   def edit
