@@ -2,7 +2,7 @@ class Moyatto < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-  has_many :guesses
-  has_many :sukkiris
+  has_many :guesses ,dependent: :destroy
+  has_many :sukkiris ,dependent: :destroy
 
 end
