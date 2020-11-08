@@ -1,6 +1,6 @@
 class MoyattosController < ApplicationController
   def index
-    @moyattos = Moyatto.all
+    @moyattos = Moyatto.all.order(updated_at: "DESC")
   end
 
   def new
@@ -27,7 +27,6 @@ class MoyattosController < ApplicationController
     @moyatto = Moyatto.find(params[:id])
     @moyatto.update(moyatto_params)
     redirect_to moyatto_path(@moyatto.id)
-
   end
 
   def destroy

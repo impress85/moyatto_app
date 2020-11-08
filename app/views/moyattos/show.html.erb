@@ -1,68 +1,139 @@
-<h1>moyattoのshow画面</h1>
-<p>やりたいこと</p>
-<%= "#{@moyatto.want}" %>
-<p>どのようなエラー</p>
-<%= "#{@moyatto.cannot}" %>
-<% if @moyatto.image.attached? %>
-  <p> エラー画面</p>
-  <%= image_tag @moyatto.image %>
-<%end%>
-<p>詳細な状況</p>
-<%= "#{@moyatto.status}" %>
+<div class="show_all">
+  <div class="show_title">
+    <div class="show_title_left">
+      <div class="show_title_main">
+        <h1><%= link_to"#{@moyatto.want}",edit_moyatto_path(@moyatto.id) %></h1>
+      </div>
+      <div class="show_title_sup">
+        <div class="moyatto_nickname">
+          <%= "#{@moyatto.user.nickname}" %>
+        </div>
+        <div class="moyatto_dated">
+          <%= "#{time_ago_in_words(@moyatto.updated_at)}前" %> 
+        </div>
+      </div>
+    </div>
+    <div class="show_title_right">
+      <div class="moyatto_edit">
+        <%# <%= link_to "追記・修正",edit_moyatto_path(@moyatto.id) %> 
+      </div>
+      <div class="moyatto_delete">
+      <%# <%= link_to "削除",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %> 
+      </div>
+    </div>
+  </div>
 
-<br><br>
+  <div class="show_guess_sukkiri">
 
-<%= link_to "このmoyattoの編集をする",edit_moyatto_path(@moyatto.id) %>
-<br>
-<%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %>
 
-<br><br>
-
-<%# 仮説の一覧を表示する %>
-
-<h2>ここからguessとsukkiriの一覧表示</h2>
-<%= link_to "新しく仮説を登録する",new_moyatto_guess_path(@moyatto.id) %>
-<hr>
-
-<% if @guesses %>  <%# 仮説があれば表示 %>
-  <% @guesses.each do |guess| %>
-  <%# @sukkiris.each do |sukkiri| %>
-      <p>【仮説】 <%= "#{guess.story}" %></p>
-      <%if guess.sukkiri != nil%>
-    <p>【結果】  <%= "#{guess.sukkiri.result}" %></p> 
-          <%# スッキリマーク %> 
-      <% if guess.sukkiri.moyatto_status ==  1 %>
-        <%= "すっきり" %>
-      <%else%>
-        <%= "もやっと"%>
+    <div class="show_content">
+      <div class="cannot_title">
+        <h2>やりたい内容の詳細</h2>
+      </div>
+      <div class="cannot_text">
+        <%= safe_join(@moyatto.cannot.split("\n"),tag(:br)) %>
+      </div>
+      <% if @moyatto.image.attached? %>
+        <div class="error_title">
+          <h2> 参考画面</h2>
+        </div>
+        <div class="error_img">
+          <%= image_tag @moyatto.image %>
+        </div>
       <%end%>
-    <%# スッキリマークここまで %> 
-    <%else%>
-        <%= link_to "仮説を編集する",edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
-    <br>
-     <%= link_to "結果を入力する" ,new_moyatto_guess_sukkiri_path(@moyatto.id,guess.id) %>
-    <%end%>
-    <hr>
-  <%end %>
-<%end%>
+      <div class="status_title">
+        <h2>状況の詳細</h2>
+      </div>
+      <div class="status_text">
+        <%= safe_join(@moyatto.status.split("\n"),tag(:br)) %>
+      </div>
+    </div>
+
+    <div class="guess_sukkiri">
+      <div class="guess_create">
+      <div class="guess_new">
+        <%= link_to "仮説を立てて確認する",new_moyatto_guess_path(@moyatto.id) %>
+      </div>
+      </div>
+      <% if @guesses %>  <%# 仮説があれば表示 %>
+        <% @guesses.each.with_index do |guess,i| %>   <%# 仮説と結果を取り出す %>
+          <div class="guess_sukkiri_box">
+            <div class="guess_box">
+              <div class="guess_left">
+                <%= "No.#{i+1} ： " %>
+              </div>
+              <div class="guess_right">
+                <%= link_to safe_join(guess.story.split("\n"),tag(:br)) ,edit_moyatto_guess_path(@moyatto.id,guess.id) %>   
+              </div>
+            </div>
+            <%if guess.sukkiri == nil %>  <%# 結果をもっていない %>
+              <div class="sukkiri_box_yet">
+                <div class="yet_left">
+                  <%= link_to "結果の登録 ▶︎",new_moyatto_guess_sukkiri_path(@moyatto.id,guess.id) %>
+                </div>
+                <div class="yet_right">
+                  <div class="guess_edit">
+                  </div>
+                  <div class="guess_delete">
+                  </div>
+                </div>
+              </div>
+            <% else %> <%# 結果をもっている %>
+              <% if guess.sukkiri.moyatto_status ==  1 %> <%# 結果はスッキリである %>
+                <div class="sukkiri_box_clear">
+                  <div class="status_memo">
+                  <a class="sukkiri">スッキリ</a>
+                  </div>
+                  <div class="sukkiri_text">
+                    <%= safe_join(guess.sukkiri.result.split("\n"),tag(:br)) %>
+                  </div>
+                </div>
+              <%else%>  <%# 結果はモヤットである %>
+                <div class="sukkiri_box_moyatto">
+                  <div class="status_memo">
+                    <a class="moyatto"> モヤット</a>
+                  </div>
+                  <div class="sukkiri_text">
+                    <%= safe_join(guess.sukkiri.result.split("\n"),tag(:br)) %>
+                  </div>
+                </div>  
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
 
-<ul>
-  <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-  <% @advices.each do |advice| %>
-    <li>
-      <%= advice.comment %>
-      <%= advice.user.nickname %>
-    </li>
-  <% end %>
-</ul>
-<%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
-<% if current_user %>
-  <%= form_with model:[@moyatto,@advice], local: true do |f| %>
-      <%= f.label :comment, "アドバイス" %>
-      <%= f.text_field :comment %>
-      <%= f.submit "送信する", class: :form__btn  %>
-  <% end %>
-<% end %>
-<%# ログインしているユーザーには上記を表示する %>
 
+  <div class="advice_box">
+    <h1>advice</h1>
+    <ul>
+      <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+      <% @advices.each do |advice| %>
+        <li>
+          <div class="advice">
+            <div class="advice_text">
+              <%= safe_join(advice.comment.split("\n"),tag(:br)) %>
+            </div>
+            <div class="advice_nickname">
+              <%=  advice.user.nickname %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+    <% if current_user %>
+      <div class="advice_create">
+        <%= form_with model:[@moyatto,@advice], local: true do |f| %>
+            <%= f.label :comment, "アドバイス" %>
+            <%= f.text_area :comment %>
+            <%= f.submit "送信する", class: :form__btn  %>
+        <% end %>
+      </div>
+    <% end %>
+    <%# ログインしているユーザーには上記を表示する %>
+  </div>
+</div>

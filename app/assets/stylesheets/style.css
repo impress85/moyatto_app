@@ -1,0 +1,505 @@
+/* リセットCSS */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color:#3b4043;
+}
+
+/* ヘッダー */
+
+.header {
+  background-color: #e4f3ff;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_left{
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  text-align: center;
+}
+
+.logo_title{
+  font-size: 30px;
+}
+
+.logo_right{
+  display: flex;
+  align-items: center;
+}
+
+.signup_btn{
+  margin-left: 20px;
+}
+
+.logout_btn{
+  margin-left: 20px;
+}
+/* ヘッダー ここまで*/
+
+
+/* moyatto インデックス */
+
+/* コンセプト */
+/* ログイン状態 */
+
+.top{
+  width: 100%;
+  background-color: ghostwhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moyatto_btn{
+  padding: 15px;
+  font-size: 20px;
+  background-color: rgb(90, 158, 163);
+  color: #e4f3ff;
+  margin: 40px;
+  border-radius: 10px;
+ }
+
+ .moyatto_add_img{
+   width: 200px;
+ }
+
+ /* ログアウト状態 */
+
+ .concept_top{
+
+  background-color: ghostwhite;
+  height: 50vw;
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.concept{
+  width: 500px;
+}
+
+.concept_text{
+  color: #3b4043;
+}
+.concept_text,h1,p{
+  text-align: center;
+  padding: 5px;
+}
+
+.concept_nav{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  color: #e4f3ff;
+}
+
+.login_btn{
+  padding: 7px 15px;
+  background-color: #66d4f5;
+  border-radius: 10px;
+  color: aliceblue;
+}
+
+.sign_up_btn{
+  padding: 7px 15px;
+  margin-left: 30px;
+  background-color: hsl(180, 65%, 65%);
+  border-radius: 10px;
+}
+/* 
+
+.login_btn ヘッダーと共有
+.sign_up_btn ヘッダーと共有 */
+
+.nav__btn{
+}
+
+
+.concept_img{
+  width: 40%;
+  margin-left: 20px;
+
+}
+
+/* インデックスもやっと一覧画面 */
+
+.moyatto_index_title{
+  margin: 50px 0 ;
+  width: 100%;
+  text-align: center;
+}
+
+.moyatto_index{
+background-color:  ghostwhite;
+height: 150px;
+width: 800px;
+margin: 20px auto;
+display: flex;
+border-radius: 20px;
+padding: 10px;
+/* border-bottom: 1px solid #3c5f69;  */
+/* border: 1px solid #ccc;  */
+/* box-shadow: 2px 2px 3px #e4f3ff; */
+
+}
+
+.moyatto_status{
+/* background-color: bisque; */
+width: 150px;
+justify-content: space-around;
+padding-top: 10px;
+}
+
+.status_memo{
+/* background-color: burlywood; */
+width: 90px;
+height: 30px;
+text-align: center;
+margin: 0 auto;
+flex-shrink: 0;
+}
+
+.sukkiri{
+  background-color: #f3847c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color:ghostwhite;
+}
+
+.moyatto{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: cadetblue 1px solid;
+  color: cadetblue;
+}
+
+.status_img{
+text-align: center;
+
+}
+
+.sukkiri_status_img{
+  height: 80px;
+}
+
+.moyatto_box{
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.moyatto_title{
+line-height:100px;
+width: 100%;
+font-size: 23px;
+text-align: center;
+border-bottom: 1px solid #9dc0ca; 
+}
+
+.moya_title{
+  color: #5c7c85;
+  display:inline-block;
+  vertical-align: middle;
+  line-height:normal;
+}
+
+.moyatto_sup{
+/* background-color: dimgrey; */
+display: flex;
+justify-content: flex-end;
+}
+
+.moyatto_nickname{
+/* background-color: greenyellow; */
+/* width: 100px; */
+}
+
+.moyatto_dated{
+/* background-color: mediumseagreen; */
+padding: 0 30px 0 80px;
+}
+
+
+
+
+
+
+/* もやっと詳細画面 */
+/* もやっとのタイトル */
+
+.show_all{
+  background-color:  ghostwhite;
+  padding: 20px;
+  width: 100%;
+}
+
+.show_title{
+  width: 100%;
+
+
+  /* background-color: gainsboro; */
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  /* border-radius: 20px; */
+  margin-bottom:  50px;
+}
+
+.show_title_left{
+  width: 80%;
+}
+
+.show_title_main{
+  /* color: #02536b; */
+  border-bottom: 1px solid #3c5f69; 
+  /* font-weight: bold; */
+}
+.show_title_main,h1{
+  color: #02536b;
+  /* border-bottom: 3px solid #02536b;  */
+  font-weight: bold;
+}
+
+.show_title_sup{
+display: flex;
+justify-content: space-around;
+}
+
+.moyatto_nickname{
+}
+
+.moyatto_dated{
+}
+
+.show_title_right{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.moyatto_edit{
+}
+
+.moyatto_delete{
+}
+
+
+/* もやっと、仮説、結果 */
+.show_guess_sukkiri{
+width: 100%;
+display: flex;
+}
+
+/* もやっと詳細 */
+.show_content{
+width: 50%;
+margin: 0 20px;
+}
+
+.cannot_title{
+  border-bottom: 1px solid #ccc; 
+  /* background-color: #e4f3ff; */
+  ;
+}
+
+.cannot_text{
+margin: 10px 0 40px 0;
+padding: 20px;
+}
+
+.error_title{
+  width: 100%;
+  border-bottom: 1px solid #ccc; 
+}
+
+.error_img{
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0 40px 0;
+}
+
+.status_title{
+  border-bottom: 1px solid #ccc; 
+  width: 100%;  
+}
+
+.status_text{
+width: 100%;
+padding: 20px;
+margin: 10px 0 40px 0;
+}
+
+
+/* 仮説、結果 */
+.guess_sukkiri{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.guess_create{
+}
+
+.guess_new{
+  background-color: wheat;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.guess_sukkiri_box{
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.guess_box{
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e4f3ff; 
+  /* border: 1px solid #ccc;  */
+/* box-shadow: 2px 2px 3px #e4f3ff; */
+}
+
+.guess_left{
+  flex-shrink: 0;
+  width: 90px;
+  text-align: center;
+  /* padding-top: 10px; */
+}
+
+.guess_right{
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.sukkiri_box_yet{
+  /* display: flex;
+  justify-content: space-around; */
+  padding: 10px 30px;
+}
+
+.yet_left{
+  background-color: #e4f3ff;
+  padding: 10px 20px;
+  width: 150px;
+  text-align: center;
+  margin: 0 auto;
+  flex-shrink: 0;
+border: 1px solid  #e4f3ff;
+box-shadow: 2px 2px 3px #e4f3ff;
+border-radius: 20px;
+}
+
+.yet_right{
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.guess_edit{
+}
+
+.guess_delete{
+  margin-left: 30px;
+}
+
+.sukkiri_box_clear{
+  display: flex;
+  padding: 10px;
+}
+
+.sukkiri_text{
+  width: 100%;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.sukkiri_box_moyatto{
+  display: flex;
+  padding: 10px;
+}
+
+
+.advice_box{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.advice{
+  background-color: rgb(218, 224, 206);
+  margin: 20px;
+  border-radius: 20px;
+  padding: 0 30px;
+}
+
+.advice_text{
+  padding: 10px 0;
+}
+.advice_nickname{
+  padding-bottom: 10px;
+  text-align: end;
+}
+
+.advice_create{
+  text-align: center;
+}
+
+
+textarea {
+  height: auto;
+  width: 500px;
+  min-height: 200px;
+  margin: 0 auto;
+  color: #3b4043;
+  padding: 10px;
+}
+
+select {
+  width: 500px;
+  height: 40px;
+}
