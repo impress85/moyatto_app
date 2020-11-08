@@ -10,21 +10,40 @@
   </head>
 
   <body>
-      <header>
-            <%= link_to "moyatto", root_path %>
 
-          <%# ログインしているとき %>
-          <% if user_signed_in? %>
-              <%= link_to "ログアウト",destroy_user_session_path , method: :delete, class: :nav__logout %>
-           <% else %>
-
-          <%# ログインしていないとき %>
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-          <%end%>
-
+    <%# ヘッダー %>
+    <header class="header">
+      <%# ヘッダー left %>
+      <div class="header_left">
+          <div class="logo">
+            <%= link_to image_tag("04_01_001.png"),"/" %>
+          </div>
+          <div class="logo_title">
+            <a href= "/" >moyatto</a>
+          </div>
+        </div>
+      </div>
+      <%# ヘッダー right %>
+      <div class="logo_right">
+        <% if user_signed_in? %>
+        <%# ログイン状態 %>
+          <%= link_to "#{current_user.nickname}さん",root_path %>
+          <div class="logout_btn">
+            <%= link_to "ログアウト",destroy_user_session_path , method: :delete, class: :nav__btn %>
+          </div>
+        <% else %>
+        <%# ログアウト状態 %>
+          <div class="login_btn">
+            <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+          </div>
+          <div class="sign_up_btn">
+            <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+          </div>
+        <%end%>
+      </div>
     </header>
 
     <%= yield %>
+
   </body>
 </html>

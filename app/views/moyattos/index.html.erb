@@ -1,28 +1,103 @@
-<h1>moyattoのindexです</h1>
-<% if signed_in? %>
-  <%= "(ログイン状態であれば表示する)" %>
-  <br>
-  <%= link_to "こんにちは、#{current_user.nickname}さん",root_path %>   
-  <h3>moyattoを登録する。</h3>
-  <%= link_to "登録ボタン",new_moyatto_path %>
-<%end%>
-<h3>moyatto一覧</h3>
-<hr>
-<% @moyattos.each do |moyatto| %>
-  <%# スッキリマーク %> 
-  <% @sukkiris= moyatto.sukkiris %>
-  <% if @sukkiris.find_by(moyatto_status: '1') != nil%>
-    <%= "すっきり" %>
-  <%else%>
-    <%= "もやっと"%>
-  <%end%>
-  <%# スッキリマークここまで %> 
-    <br>
-  <%= "  やりたいこと:#{moyatto.want}" %>
+<%# トップ %>
+  <% if signed_in? %>
 
-  <br>
-  <%= "投稿者：#{moyatto.user.nickname}" %>
-  <br>
-  <%= link_to "このmoyattoの詳細をみる",moyatto_path(moyatto.id) %>
-  <hr>
+    <%# ログイン状態 %>
+    <div class="top">
+      <h3>あたらしいmoyattoを登録する。</h3>
+        <%= link_to "ここから",new_moyatto_path, class: :moyatto_btn %>
+            <%= image_tag "04_05_005.png", class:"moyatto_add_img" %>
+
+    </div>
+<%# トップここまで %>
+
+
+
+<%# コンセプト %>
+  <%else%>
+    <%# ログアウト状態 %>
+    <div class="concept_top">
+      <div class="concept">
+        <div class="consept_text">
+          <h1>Organize your thoughs</h1>
+          <p>moyattoは 「プログラミング初学者」のための<br>
+          思考整理アプリケーションです。</p>
+        </div>
+        <div class="concept_nav">
+          <div class="login_btn">
+            <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+          </div>
+          <div class="sign_up_btn">
+            <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+          </div>
+        </div>
+        </div>
+      <%= image_tag "04_05_005.png", class:"concept_img" %>
+    </div>
+  <% end %>
+<%# コンセプトここまで %>
+
+
+<%# もやっと一覧クラス %>
+<div class="moyatto_index_title">
+<h3>▼　moyatto一覧　▼</h3>
+</div>
+<% @moyattos.each do |moyatto| %>
+  <div class="moyatto_index">
+    <% @sukkiris= moyatto.sukkiris %>
+    <% if @sukkiris.find_by(moyatto_status: '1') != nil%>
+    <%# もやっとせる すっきり %>
+      <div class="moyatto_status">
+        <div class="status_memo">
+          <a class="sukkiri">スッキリ</a>
+        </div>
+        <div class="status_img">
+          <%= image_tag "sukkiri_01.png", class:"sukkiri_status_img" %>
+        </div>
+      </div>
+      <div class="moyatto_box">
+        <div class="moyatto_title">
+         <%= link_to "#{moyatto.want}",moyatto_path(moyatto.id),class:"moya_title" %>
+        </div>
+        <div class="moyatto_sup">
+          <div class="moyatto_nickname">
+            <%= "#{moyatto.user.nickname}" %>
+          </div>
+          <div class="moyatto_dated">
+            <%= "#{time_ago_in_words(moyatto.updated_at)}前" %>
+          </div>
+        </div>
+      </div>
+            <%# もやっとせる もやっと %>
+    <%else%>
+      <div class="moyatto_status">
+        <div class="status_memo">
+          <a class="moyatto">モヤット</a>
+        </div>
+        <div class="status_img">
+          <%= image_tag "moyatto_01.png", class:"sukkiri_status_img" %>
+        </div>
+      </div>
+      <div class="moyatto_box">
+        <div class="moyatto_title">
+          <%= link_to "#{moyatto.want}",moyatto_path(moyatto.id),class:"moya_title" %>
+        </div>
+        <div class="moyatto_sup">
+          <div class="moyatto_nickname">
+            <%= "#{moyatto.user.nickname}" %>
+          </div>
+          <div class="moyatto_dated">
+            <%= "#{time_ago_in_words(moyatto.updated_at)}前" %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
 <%end%>
+
+
+
+
+
+
+
+
