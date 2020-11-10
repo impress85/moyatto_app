@@ -1,0 +1,64 @@
+<div class="guess_sukkiri">
+  <% if user_signed_in? && current_user.id == @moyatto.user.id %>
+    <div class="guess_create">
+      <div class="guess_new">
+        <%= link_to "仮説を立てて確認する",new_moyatto_guess_path(@moyatto.id) %>
+      </div>
+    </div>
+  <%end%>
+
+  <% if @guesses.empty? %> 
+    <div class="no_advice">
+      <p>まだ仮説がありません</p>
+    </div>
+  <%end%>
+
+    <%# 仮説があれば表示 %>
+  <% @guesses.each.with_index do |guess,i| %>   <%# 仮説と結果を取り出す %>
+    <div class="guess_sukkiri_box">
+      <div class="guess_box">
+        <div class="guess_left">
+          <%= "仮説 #{i+1}  " %>
+        </div>
+        <div class="guess_right">
+          <% if user_signed_in? && current_user.id == @moyatto.user.id %>
+            <%= link_to safe_join(guess.story.split("\n"),tag(:br)) ,edit_moyatto_guess_path(@moyatto.id,guess.id)   %>
+          <%else%>
+            <%= safe_join(guess.story.split("\n"),tag(:br)) %>
+          <%end%>
+        </div>
+      </div>
+      <% if guess.sukkiri == nil %>  <%# 結果をもっていない %>
+        <div class="sukkiri_box_yet">
+          <% if user_signed_in? && current_user.id == @moyatto.user.id %>
+            <div class="yet_left">
+              <%= link_to "結果の登録 ▶︎",new_moyatto_guess_sukkiri_path(@moyatto.id,guess.id) %>
+            </div>
+          <% end%>
+          <div class="yet_right">
+          </div>
+        </div>
+      <% else %> <%# 結果をもっている %>
+        <% if guess.sukkiri.moyatto_status ==  1 %> <%# 結果はスッキリである %>
+          <div class="sukkiri_box_clear">
+            <div class="status_memo">
+              <a class="sukkiri">スッキリ</a>
+            </div>
+            <div class="sukkiri_text">
+              <%= safe_join(guess.sukkiri.result.split("\n"),tag(:br)) %>
+            </div>
+          </div>
+        <%else%>  <%# 結果はモヤットである %>
+          <div class="sukkiri_box_moyatto">
+            <div class="status_memo">
+              <a class="moyatto"> モヤット</a>
+            </div>
+            <div class="sukkiri_text">
+              <%= safe_join(guess.sukkiri.result.split("\n"),tag(:br)) %>
+            </div>
+          </div>  
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

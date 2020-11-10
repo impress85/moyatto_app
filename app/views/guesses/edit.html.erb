@@ -1,7 +1,23 @@
-<h1>仮説の編集</h1>
-<%= form_with model:[@moyatto,@guess], local: true  do |f| %>
-  <%= f.text_area :story %>
-  <%= f.submit "保存する"  %>
-<% end %>
 
+<div class="wrappar">
+<div class="show_all">
+
+  <%= render 'moyattos/show-form' %>
+
+  <div class="show_guess_sukkiri">
+
+    <%= render 'moyattos/show-content'%>
+
+
+<div class='guess_create_edit'>
+    <%= form_with model:[@moyatto,@guess], local: true  do |f| %>
+      <h2>仮説の追記・修正</h2>
+      <%= f.text_area :story, placeholder:"調べたことなど",class: :story_area %>
+      <%= f.submit "保存する"  %>
+    <% end %>
+<br>
 <%= link_to "仮説を削除する",moyatto_guess_path(@moyatto.id,@guess.id),method: :delete, data: { confirm: '削除しますか？' }  %>
+
+</div>
+
+</div>

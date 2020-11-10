@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "moyattos#index"
   resources :moyattos, only:[:new,:create,:show,:edit,:update,:destroy] do
-    resources :advices, only:[:new,:create]
+    resources :advices, only:[:new,:create,:destroy]
     resources :guesses, only:[:new,:create,:edit,:update,:destroy] do
       resources :sukkiris, only:[:new,:create]
     end  

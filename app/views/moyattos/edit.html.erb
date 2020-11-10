@@ -1,12 +1,25 @@
-<h1>moyattoの編集画面です</h1>
+<div class="wrappar">
+    <div class="top">
+      <h1>moyattoの編集</h1>
+    </div>
+    <div class="moyatto_form">
 <%= form_with model: @moyatto do |f| %> 
-  <p>やりたいことは何ですか？（編集）</p>
-  <%= f.text_area :want %>
-    <p>どのようなエラーですか？（編集）</p>
-  <%= f.text_area :cannot %>  
-   <p> エラー画面があれば添付してください（編集）</p>
+  <h4>やりたいこと・解決したいこと<span><必須><span></h4>
+  <%= f.text_area :want ,  placeholder:"やりたいことと、解決したいことを明確にしましょう。"  ,class: :want_area %>
+  <br><br>
+    <h4>できない内容の詳細<span><必須><span></h4>
+  <%= f.text_area :cannot,  placeholder:"エラーログの確認などを行い、出来ないことを明確にしましょう。"  ,class: :cannot_area %>  
+  <br><br>
+   <h4> エラー画面があれば添付してください</h4>
   <%= f.file_field :image %>
-    <p>どのようなことが、どのタイミングで起こりますか？（編集）</p>
-  <%= f.text_area :status %>
-  <%= f.submit "編集する"  %>
+  <br><br>
+    <h4>状況の詳細<span><必須><span></h4>
+  <%= f.text_area :status,  placeholder:"どのようなことが、どのタイミングで起こるか　明確にしましょう。"  ,class: :status_area %>
+  <br><br>
+  <%= f.submit "この内容で修正する"  %>
 <% end %>
+<br><br>
+ <%= link_to "このmoyattoを削除する",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %> 
+
+</div>
+</div>

@@ -30,12 +30,13 @@
             <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
           </div>
         </div>
-        </div>
+      </div>
       <%= image_tag "04_05_005.png", class:"concept_img" %>
     </div>
   <% end %>
 <%# コンセプトここまで %>
 
+<div class="wrappar">
 
 <%# もやっと一覧クラス %>
 <div class="moyatto_index_title">
@@ -56,7 +57,7 @@
       </div>
       <div class="moyatto_box">
         <div class="moyatto_title">
-         <%= link_to "#{moyatto.want}",moyatto_path(moyatto.id),class:"moya_title" %>
+          <%= link_to safe_join(moyatto.want.split("\n"),tag(:br)) ,moyatto_path(moyatto.id),class:"moya_title" %>
         </div>
         <div class="moyatto_sup">
           <div class="moyatto_nickname">
@@ -67,7 +68,7 @@
           </div>
         </div>
       </div>
-            <%# もやっとせる もやっと %>
+   <%# もやっとせる もやっと %>
     <%else%>
       <div class="moyatto_status">
         <div class="status_memo">
@@ -79,7 +80,7 @@
       </div>
       <div class="moyatto_box">
         <div class="moyatto_title">
-          <%= link_to "#{moyatto.want}",moyatto_path(moyatto.id),class:"moya_title" %>
+          <%= link_to safe_join(moyatto.want.split("\n"),tag(:br)) ,moyatto_path(moyatto.id),class:"moya_title" %>
         </div>
         <div class="moyatto_sup">
           <div class="moyatto_nickname">
@@ -94,6 +95,7 @@
   </div>
 <%end%>
 
+</div>
 
 
 

@@ -1,0 +1,22 @@
+    <div class="show_content">
+      <div class="cannot_title">
+        <h2>やりたい内容の詳細</h2>
+      </div>
+      <div class="cannot_text">
+        <%= safe_join(@moyatto.cannot.split("\n"),tag(:br)) %>
+      </div>
+      <% if @moyatto.image.attached? %>
+        <div class="error_title">
+          <h2> 参考画面</h2>
+        </div>
+        <div class="error_img">
+          <%= image_tag @moyatto.image %>
+        </div>
+      <%end%>
+      <div class="status_title">
+        <h2>状況の詳細</h2>
+      </div>
+      <div class="status_text">
+        <%= safe_join(@moyatto.status.split("\n"),tag(:br)) %>
+      </div>
+    </div>

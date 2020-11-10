@@ -1,0 +1,37 @@
+
+  <div class="show_title">
+    <div class="show_title_left">
+      <div class="show_title_main">
+        <h1><%=safe_join(@moyatto.want.split("\n"),tag(:br)) %></h1>
+      </div>
+      <div class="show_title_sup">
+        <div class="moyatto_nickname">
+          <%= "#{@moyatto.user.nickname}" %>
+        </div>
+        <div class="moyatto_dated">
+          <%= "#{time_ago_in_words(@moyatto.updated_at)}前" %> 
+        </div>
+      </div>
+    </div>
+    <div class="show_title_right">
+          <% if user_signed_in? && current_user.id == @moyatto.user.id %>
+      <div class="moyatto_edit">
+
+        <%= link_to "追記・修正・削除こちら▶︎",edit_moyatto_path(@moyatto.id), class: :nav__btn %> 
+
+      </div>
+              <%end%>
+      <div class="moyatto_delete">
+      </div>
+    </div>
+  </div>
+
+ 
+
+
+
+
+
+
+
+
