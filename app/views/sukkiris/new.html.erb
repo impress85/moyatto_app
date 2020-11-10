@@ -1,15 +1,41 @@
-<h1>結果の登録</h1>
+
+<div class="wrappar">
+<div class="show_all">
+
+
+  <%= render 'moyattos/show-form' %> 
+
+   <div class="show_guess_sukkiri"> 
+
+    <%= render 'moyattos/show-content'%> 
+
+
+<div class='.guess_create_edit'>
+<div class="status_title">
+<h2>立てた仮説</h2>
+</div>
+<div class="cannot_text">
+<%= "#{@guess.story}" %>
+</div>
+
 <%= form_with model:[@moyatto,@guess,@sukkiri], local: true  do |f| %>
-  <p>結果を登録</p>
-  <%= f.text_area :result %>
+<div class="status_title">  
+  <h2>仮説の結果</h2>
+    </div>
+  <%= f.text_area :result ,placeholder:"aaa", class: :sukkiri_area %>
+
   <br>
  <br>
-  <%= f.label :moyatto_status, 'すっきり？' %>
+  <%= f.label :moyatto_status, "スッキリしましたか？" %>
  
    <br>
-  <%= f.select :moyatto_status,{'すっきり':1,'もやっと':2},{ include_blank: '----'}, 
+  <%= f.select :moyatto_status,{'スッキリ':1,'モヤット':2},{ include_blank: '--------'}, 
   { class: 'form-control' , required: true } %>
 <br>
 <br>
   <%= f.submit "結果を保存"  ,data: { confirm: '結果を登録しますか？' }  %>
 <% end %>
+
+</div>
+</div>
+</div>

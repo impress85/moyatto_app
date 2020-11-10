@@ -1,15 +1,29 @@
-<div class="show_all">
+<div class="wrappar">
 
-  <%= render 'show-form' %>
+  <%@sukkiris= @moyatto.sukkiris %>
 
-  <div class="show_guess_sukkiri">
+  <% if @sukkiris.find_by(moyatto_status: '1') != nil%>
 
-    <%= render 'show-content'%>
+    <div class="show_all_clear">
 
-    <%= render 'show-guess-sukkiri' %>
+  <%else%>
 
-  </div>
+    <div class="show_all">
 
-  <%= render 'show-advice' %>
+  <% end %>
+
+    <%= render 'show-form' %>
+
+    <div class="show_guess_sukkiri">
+
+      <%= render 'show-content'%>
+
+     <%= render 'show-guess-sukkiri' %>
+
+    </div>
+
+    <%= render 'show-advice' %>
+
+  </div>  
 
 </div>

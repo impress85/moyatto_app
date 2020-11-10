@@ -2,7 +2,7 @@
   <div class="show_title">
     <div class="show_title_left">
       <div class="show_title_main">
-        <h1><%= link_to"#{@moyatto.want}",edit_moyatto_path(@moyatto.id) %></h1>
+        <h1><%=safe_join(@moyatto.want.split("\n"),tag(:br)) %></h1>
       </div>
       <div class="show_title_sup">
         <div class="moyatto_nickname">
@@ -14,11 +14,14 @@
       </div>
     </div>
     <div class="show_title_right">
+          <% if user_signed_in? && current_user.id == @moyatto.user.id %>
       <div class="moyatto_edit">
-        <%# <%= link_to "追記・修正",edit_moyatto_path(@moyatto.id) %> 
+
+        <%= link_to "追記・修正・削除こちら▶︎",edit_moyatto_path(@moyatto.id), class: :nav__btn %> 
+
       </div>
+              <%end%>
       <div class="moyatto_delete">
-      <%# <%= link_to "削除",moyatto_path(@moyatto.id),method: :delete, data: { confirm: '削除しますか？' } %> 
       </div>
     </div>
   </div>

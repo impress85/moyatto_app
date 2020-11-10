@@ -37,6 +37,11 @@ a {
 
 /* ヘッダー */
 
+.wrappar{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .header {
   background-color: #e4f3ff;
   padding: 0 30px;
@@ -73,9 +78,9 @@ a {
 /* ヘッダー ここまで*/
 
 
-/* moyatto インデックス */
+/* moyatto インデックス-------------------------- */
 
-/* コンセプト */
+/* コンセプト -----------------------------*/
 /* ログイン状態 */
 
 .top{
@@ -84,6 +89,57 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px;
+}
+
+span{
+  color: red;
+  font-size: 9px;
+}
+
+.moyatto_form{
+  background-color: ghostwhite;
+  width: 800px;
+  margin: 40px auto;
+  padding: 40px 100px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+textarea {
+  width: 100%;
+  color: #3b4043;
+  padding: 10px;
+}
+
+::placeholder{
+  color: lightgray;
+}
+
+.want_area{
+  height: 70px;
+}
+
+.cannot_area{
+  height: 200px;
+}
+
+.status_area{
+  height: 200px;
+}
+
+select {
+  width: 500px;
+  height: 40px;
+}
+
+.moyatto_edit{
+  width: 120px;
+  padding: 8px;
+  font-size: 12px;
+  color: #e4f3ff;
+  margin: 40px;
+  text-align: center;
 }
 
 .moyatto_btn{
@@ -96,7 +152,7 @@ a {
  }
 
  .moyatto_add_img{
-   width: 200px;
+  width: 200px;
  }
 
  /* ログアウト状態 */
@@ -113,6 +169,11 @@ a {
 
 .concept{
   width: 500px;
+  text-align: center;
+}
+
+.concept_img{
+  width: 40%;
 }
 
 .concept_text{
@@ -143,22 +204,9 @@ a {
   background-color: hsl(180, 65%, 65%);
   border-radius: 10px;
 }
-/* 
-
-.login_btn ヘッダーと共有
-.sign_up_btn ヘッダーと共有 */
-
-.nav__btn{
-}
 
 
-.concept_img{
-  width: 40%;
-  margin-left: 20px;
-
-}
-
-/* インデックスもやっと一覧画面 */
+/* インデックス moyatto index -----------------------------*/
 
 .moyatto_index_title{
   margin: 50px 0 ;
@@ -174,21 +222,15 @@ margin: 20px auto;
 display: flex;
 border-radius: 20px;
 padding: 10px;
-/* border-bottom: 1px solid #3c5f69;  */
-/* border: 1px solid #ccc;  */
-/* box-shadow: 2px 2px 3px #e4f3ff; */
-
 }
 
 .moyatto_status{
-/* background-color: bisque; */
 width: 150px;
 justify-content: space-around;
 padding-top: 10px;
 }
 
 .status_memo{
-/* background-color: burlywood; */
 width: 90px;
 height: 30px;
 text-align: center;
@@ -229,31 +271,30 @@ justify-content: space-between;
 .moyatto_title{
 line-height:100px;
 width: 100%;
-font-size: 23px;
+font-size: 16px;
 text-align: center;
 border-bottom: 1px solid #9dc0ca; 
+overflow: hidden;
+
 }
 
 .moya_title{
-  color: #5c7c85;
+  color: #3c5f69;
   display:inline-block;
   vertical-align: middle;
   line-height:normal;
 }
 
 .moyatto_sup{
-/* background-color: dimgrey; */
 display: flex;
 justify-content: flex-end;
 }
 
 .moyatto_nickname{
-/* background-color: greenyellow; */
-/* width: 100px; */
+
 }
 
 .moyatto_dated{
-/* background-color: mediumseagreen; */
 padding: 0 30px 0 80px;
 }
 
@@ -262,7 +303,7 @@ padding: 0 30px 0 80px;
 
 
 
-/* もやっと詳細画面 */
+/* moyatto 詳細画面 --------------------------------------------*/
 /* もやっとのタイトル */
 
 .show_all{
@@ -270,16 +311,17 @@ padding: 0 30px 0 80px;
   padding: 20px;
   width: 100%;
 }
+.show_all_clear{
+  background-color: floralwhite;
+  padding: 20px;
+  width: 100%;
+}
 
 .show_title{
   width: 100%;
-
-
-  /* background-color: gainsboro; */
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  /* border-radius: 20px; */
   margin-bottom:  50px;
 }
 
@@ -288,13 +330,10 @@ padding: 0 30px 0 80px;
 }
 
 .show_title_main{
-  /* color: #02536b; */
   border-bottom: 1px solid #3c5f69; 
-  /* font-weight: bold; */
 }
 .show_title_main,h1{
   color: #02536b;
-  /* border-bottom: 3px solid #02536b;  */
   font-weight: bold;
 }
 
@@ -323,21 +362,20 @@ justify-content: space-around;
 }
 
 
-/* もやっと、仮説、結果 */
+/* もやっと、仮説、結果 ---------------------------------------------*/
 .show_guess_sukkiri{
 width: 100%;
 display: flex;
 }
 
-/* もやっと詳細 */
+/* もやっと詳細 --------------------------------------------------*/
 .show_content{
 width: 50%;
-margin: 0 20px;
+margin-right:50px;
 }
 
 .cannot_title{
   border-bottom: 1px solid #ccc; 
-  /* background-color: #e4f3ff; */
   ;
 }
 
@@ -359,7 +397,8 @@ padding: 20px;
 
 .status_title{
   border-bottom: 1px solid #ccc; 
-  width: 100%;  
+  width: 100%;
+  margin-bottom: 10px;  
 }
 
 .status_text{
@@ -369,11 +408,11 @@ margin: 10px 0 40px 0;
 }
 
 
-/* 仮説、結果 */
+/* 仮説、結果------------------------------------------------ */
 .guess_sukkiri{
   width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
@@ -383,6 +422,7 @@ margin: 10px 0 40px 0;
 
 .guess_new{
   background-color: wheat;
+  margin: 30px 0;
   padding: 20px;
   border-radius: 20px;
 }
@@ -400,15 +440,12 @@ margin: 10px 0 40px 0;
   padding: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid #e4f3ff; 
-  /* border: 1px solid #ccc;  */
-/* box-shadow: 2px 2px 3px #e4f3ff; */
 }
 
 .guess_left{
   flex-shrink: 0;
   width: 90px;
   text-align: center;
-  /* padding-top: 10px; */
 }
 
 .guess_right{
@@ -417,8 +454,7 @@ margin: 10px 0 40px 0;
 }
 
 .sukkiri_box_yet{
-  /* display: flex;
-  justify-content: space-around; */
+
   padding: 10px 30px;
 }
 
@@ -429,9 +465,9 @@ margin: 10px 0 40px 0;
   text-align: center;
   margin: 0 auto;
   flex-shrink: 0;
-border: 1px solid  #e4f3ff;
-box-shadow: 2px 2px 3px #e4f3ff;
-border-radius: 20px;
+  border: 1px solid  #e4f3ff;
+  box-shadow: 2px 2px 3px #e4f3ff;
+  border-radius: 20px;
 }
 
 .yet_right{
@@ -466,14 +502,27 @@ border-radius: 20px;
 
 
 .advice_box{
-  width: 800px;
+  width: 400px;
   margin: 0 auto;
 }
 
-.advice{
-  background-color: rgb(218, 224, 206);
+.no_advice{
+  background-color: whitesmoke;
+  color:lightgray;
   margin: 20px;
   border-radius: 20px;
+  padding: 30px;
+}
+
+.advice_title{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.advice{
+  background-color: linen;
+  margin: 3px;
+  border-radius: 5px;
   padding: 0 30px;
 }
 
@@ -489,17 +538,24 @@ border-radius: 20px;
   text-align: center;
 }
 
-
-textarea {
-  height: auto;
-  width: 500px;
-  min-height: 200px;
-  margin: 0 auto;
-  color: #3b4043;
-  padding: 10px;
+.advice_delete{
+  font-size:  10px;
 }
 
-select {
-  width: 500px;
-  height: 40px;
+
+/* 仮説の登録-/* 編集-/*--------------------------- */
+/* sukkiriの登録--------------------------- */
+.guess_create_edit{
+
+  width: 60%;
+  margin: 0 20px ;
+  padding: 0 20px;
+}
+
+.story_area{
+  height: 200px;
+}
+
+.sukkiri_area{
+  height: 150px;
 }
