@@ -6,4 +6,10 @@ class Moyatto < ApplicationRecord
   has_many :sukkiris ,dependent: :destroy
   has_many :advices ,dependent: :destroy
 
+  with_options presence: true do
+    validates :want
+    validates :cannot
+    validates :status
+  end
+
 end

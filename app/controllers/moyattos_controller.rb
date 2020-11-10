@@ -1,6 +1,6 @@
 class MoyattosController < ApplicationController
   before_action :authenticate_user!  , except: [:index,:show]
-  # before_action :set_moyatto, only: []
+  before_action :set_moyatto, only: [:show,:edit,:update,:destroy]
   before_action :move_to_index, only: [:edit,:update]
 
 
@@ -13,30 +13,36 @@ class MoyattosController < ApplicationController
   end
 
   def create
-    @moyatto = Moyatto.create(moyatto_params)
-    redirect_to root_path
+    @moyatto = Moyatto.new(moyatto_params)
+  if @moyatto.save
+    redirect_to root_path  
+  else
+    render  :new
+  end
+
   end
 
   def show
-    @moyatto = Moyatto.find(params[:id])
     @guesses = @moyatto.guesses 
     @advices = @moyatto.advices
     @advice = Advice.new
   end
 
   def edit
-    @moyatto = Moyatto.find(params[:id])
   end
 
   def update
-    @moyatto = Moyatto.find(params[:id])
-    @moyatto.update(moyatto_params)
-    redirect_to moyatto_path(@moyatto.id)
+    if @moyatto.update(moyatto_params)
+      redirect_to moyatto_path(@moyatto.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    moyatto = Moyatto.find(params[:id])
+    if user_signed_in? && (current_user.id == @moyatto.user_id)
     moyatto.destroy
+    end
     redirect_to root_path
   end
 

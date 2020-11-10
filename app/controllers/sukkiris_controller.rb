@@ -1,4 +1,5 @@
 class SukkirisController < ApplicationController
+  before_action :authenticate_user! 
 
   def new
     @moyatto = Moyatto.find(params[:moyatto_id])
@@ -7,8 +8,14 @@ class SukkirisController < ApplicationController
   end
 
   def create
-    @sukkiri = Sukkiri.create(sukkiri_params)
-    redirect_to moyatto_path(params[:moyatto_id]) 
+    @sukkiri = Sukkiri.new(sukkiri_params)
+    if @sukkiri.save
+      redirect_to moyatto_path(params[:moyatto_id]) 
+    else
+      @moyatto = Moyatto.find(params[:moyatto_id])
+      @guess = Guess.find(params[:guess_id])
+      render :new
+    end
   end
 
   private
