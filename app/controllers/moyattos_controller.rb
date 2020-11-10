@@ -1,4 +1,9 @@
 class MoyattosController < ApplicationController
+  before_action :authenticate_user!  , except: [:index,:show]
+  # before_action :set_moyatto, only: []
+  before_action :move_to_index, only: [:edit,:update]
+
+
   def index
     @moyattos = Moyatto.all.order(updated_at: "DESC")
   end
@@ -38,6 +43,17 @@ class MoyattosController < ApplicationController
   private
   def moyatto_params
     params.require(:moyatto).permit(:want, :cannot, :status, :image).merge(user_id: current_user.id)
+  end
+
+  def set_moyatto
+    @moyatto = Moyatto.find(params[:id])
+  end
+
+  def move_to_index
+    @moyatto = Moyatto.find(params[:id])
+    if current_user.id != @moyatto.user_id
+      redirect_to root_path
+    end
   end
 
 end
