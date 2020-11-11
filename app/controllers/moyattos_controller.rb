@@ -41,7 +41,7 @@ class MoyattosController < ApplicationController
 
   def destroy
     if user_signed_in? && (current_user.id == @moyatto.user_id)
-    moyatto.destroy
+    @moyatto.destroy
     end
     redirect_to root_path
   end
