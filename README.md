@@ -61,6 +61,4 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :guess
-
-
+- belongs_to :gu
